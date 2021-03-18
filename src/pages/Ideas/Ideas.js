@@ -1,20 +1,22 @@
-import { useState } from 'react';
+import { Component } from "react";
 
-import './Ideas.scss';
+import { useState } from "react";
 
-const Ideas = () => {
+import "./Ideas.scss";
 
-    const [count, changeCount] = useState(0);
+class Ideas extends Component {
+    render() {
+        const {count, changeCount} = this.props;
 
-    return (
-        <div className="ideas-page">
-            <h1>Ideas</h1>
-
-            <h1>Son: {count}</h1>
-            <button onClick={() => changeCount(count - 1)}>-</button>
-            <button onClick={() => changeCount(count + 1)}>+</button>
-        </div>
-    )
+        return (
+            <div className="ideas-page">
+                <h1>Ideas</h1>
+                <h1>Son: {count} </h1>
+                <button onClick={() => changeCount(count - 1)}>-</button>
+                <button onClick={() => changeCount(count + 1)}>+</button>
+            </div>
+        );
+    }
 }
 
 export default Ideas;

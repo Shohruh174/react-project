@@ -1,3 +1,5 @@
+import { Component } from 'react';
+
 import TableItem from '../../components/TableItem/TableItem';
 import Human from '../../assets/images/human.png';
 
@@ -102,27 +104,29 @@ const tableInfoArr = [
 
 ]
 
-const Table = () => {
-    return (
-        <div className="table">
-            <h3>All tickets</h3>
-           {
-                tableInfoArr.map((item) => (
-                    <TableItem
-                        id={item.id}
-                        subject={item.subject}
-                        updateDay={item.updateDay}
-                        customerName={item.customerName}
-                        customerDate={item.customerDate}
-                        dateDay={item.dateDay}
-                        dateHour={item.dateHour}
-                        status={item.status}
-                        imgLink={item.imgLink}
-                    />
-                ))
-           }
-        </div>
-    )
+class Table extends Component {
+    render() {
+        return (
+            <div className="table">
+                <h3>All tickets</h3>
+                {
+                    tableInfoArr.map((item) => (
+                        <TableItem
+                            id={item.id}
+                            subject={item.subject}
+                            updateDay={item.updateDay}
+                            customerName={item.customerName}
+                            customerDate={item.customerDate}
+                            dateDay={item.dateDay}
+                            dateHour={item.dateHour}
+                            status={item.status}
+                            imgLink={item.imgLink}
+                        />
+                    ))
+                }
+            </div>
+        )
+    }
 }
 
 export default Table;

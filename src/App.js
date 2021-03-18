@@ -1,3 +1,4 @@
+import { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,27 +15,44 @@ import Sidebar from './containers/Sidebar/Sidebar';
 import './assets/styles/main.scss';
 import Toolbar from './containers/Toolbar';
 
-function App() {
+class App extends Component {
 
-  const [activePage, setActivePage] = useState('');
+  constructor() {
+    super();
 
-  return (
-    <Router>
-      <div className="App">
-        <Sidebar activePage={activePage} setActivePage={setActivePage}/>
-        
-        <div className="content">
-          <Toolbar activePage={activePage} setActivePage={setActivePage}/>
+    this.state = {
+      activePage: ''
+    }
 
-          <Switch>
-            <Route path="/tickets" component={Tickets}/>
-            <Route path="/overview" component={Overview}/>
-            <Route path="/ideas" component={Ideas}/>
-          </Switch>
+    this.setActivePage = this.setActivePage.bind(this);
+  }
+
+  setActivePage(page) {
+    this.setState({
+      activePage: page
+    })
+  }
+
+  render() {
+
+    return (
+      <Router>
+        <div className="App">
+          <Sidebar activePage={this.state.activePage} setActivePage={this.setActivePage} />
+
+          <div className="content">
+            <Toolbar activePage={this.state.activePage} setActivePage={this.setActivePage} />
+
+            <Switch>
+              <Route path="/tickets" component={Tickets} />
+              <Route path="/overview" component={Overview} />
+              <Route path="/ideas" component={Ideas} />
+            </Switch>
+          </div>
         </div>
-    </div>
-    </Router>
-  );
+      </Router>
+    );
+  }
 }
 
 export default App;
